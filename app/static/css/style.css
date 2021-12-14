@@ -1,0 +1,18 @@
+body {
+    font-size: 200%;
+}
+.button1 {
+    border-radius: 12px;
+}
+.button {
+  background-color: mediumblue;
+  border: none;
+  color: white;
+  padding: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
