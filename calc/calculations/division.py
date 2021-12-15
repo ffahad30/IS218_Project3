@@ -1,5 +1,5 @@
 """Division Class"""
-from calc.operations.calculation import Calculation
+from calc.calculations.calculation import Calculation
 # pylint: disable=duplicate-code
 
 # class

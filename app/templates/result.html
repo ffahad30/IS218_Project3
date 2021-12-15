@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Calculator Results{% endblock %}
 {% block head %}
-    {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
 {% endblock %}
 {% block content %}
-    <form action="/result" method="POST">
     <h1>Result</h1>
     <strong>Value 1: </strong> {{ value1 }} <br>
     <strong>Value 2: </strong> {{ value2 }} <br>
     <strong>Operation: </strong> {{ operation }} <br>
     <strong>Result: </strong> {{ result }}
+    <p>
+    <button onclick="location.href='/basicform'" class="button button1">Back to the Calculator</button>
+    </p>
 
 {% endblock %}
