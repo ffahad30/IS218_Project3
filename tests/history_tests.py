@@ -1,7 +1,7 @@
 """Testing the Calculator"""
 import pytest
 from calc.history.calculations import Calculations
-from calc.calculations.addition import Addition
+from calc.operations.addition import Addition
 
 @pytest.fixture
 def clear_history_fixture():
@@ -44,7 +44,7 @@ def test_get_calculation_first(clear_history_fixture, setup_addition_calculation
     # pylint: disable=unused-argument,redefined-outer-name
     assert Calculations.get_first_calculation().get_result() == 3
 def test_history_count(clear_history_fixture, setup_addition_calculation_fixture):
-    """Testing getting the count of calculations from the history"""
+    """Testing getting the count of operations from the history"""
     # pylint: disable=unused-argument,redefined-outer-name
     assert Calculations.count_history() == 1
 def test_get_calc_last_result_object(clear_history_fixture, setup_addition_calculation_fixture):

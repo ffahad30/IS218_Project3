@@ -2,7 +2,7 @@
 # unit test
 # pylint: disable=duplicate-code
 
-from calc.calculations.multiplication import Multiplication
+from calc.operations.multiplication import Multiplication
 
 from tests import reading_csv, results_log as log
 

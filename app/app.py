@@ -17,32 +17,29 @@ def basicform():
     """Post Request Handling"""
     if request.method == 'POST':
         # get the values out of the form
-        value1 = request.form['value1']
-        value2 = request.form['value2']
+        value_a = request.form['value1']
+        value_b = request.form['value2']
         operation = request.form['operation']
-        # make the tuple
-        my_tuple = (value1, value2)
-        # this will call the correct operation
-        getattr(Calculator, operation)(my_tuple)
-        result = str(Calculator.get_last_result_value())
-        return render_template('result.html', value1=value1, value2=value2, operation=operation, result=result)
+        getattr(Calculator, operation)(value_a, value_b)
+        result = str(Calculator.last_calculation_result_in_history())
+        return render_template('result.html', value1=value_a, value2=value_b, operation=operation, result=result)
     # Displays the form because if it isn't a post it is a get request
     else:
         return render_template('basicform.html')
 
 
-@app.route("/bad/<value1>/<value2>")
-def bad_calc(value1, value2):
+@app.route("/bad/<value_a>/<value_b>")
+def bad_calc(value_a, value_b):
     """bad calc Route Response"""
-    result = value1 + value2
+    result = value_a + value_b
     response = "The result of the calculation is: " + result + '<a href="/"> back</a>'
     return response
 
 
-@app.route("/good/<float:value1>/<float:value2>")
-def good_calc(value1, value2):
+@app.route("/good/<float:value_a>/<float:value_b>")
+def good_calc(value_a, value_b):
     """good calc Route Response"""
-    my_tuple = (value1, value2)
+    my_tuple = (value_a, value_b)
     Calculator.addition(my_tuple)
-    response = "The result of the calculation is: " + str(Calculator.get_last_result_value()) + '<a href="/"> back</a>'
+    response = "The result of the calculation is: " + str(Calculator.last_calculation_result_in_history()) + '<a href="/"> back</a>'
     return response

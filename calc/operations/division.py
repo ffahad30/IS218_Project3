@@ -1,5 +1,5 @@
 """Division Class"""
-from calc.calculations.calculation import Calculation
+from calc.operations.calculation import Calculation
 # pylint: disable=duplicate-code
 
 # class
@@ -13,8 +13,8 @@ class Division(Calculation):
         """ divide two numbers and get the result"""
         # result is in a namespace
         # value_a and value_b are seamlessly inherited from calculation class = LSP
-        if self.value_b != 0:
-            result = self.value_a // self.value_b
+        if int(self.value_b) != 0:
+            result = int(self.value_a) // int(self.value_b)
         else:
             result = "error"
         return result

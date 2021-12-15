@@ -3,7 +3,7 @@
 # pylint: disable=duplicate-code
 
 
-from calc.calculations.division import Division
+from calc.operations.division import Division
 
 from tests import reading_csv, error_log as log
 
