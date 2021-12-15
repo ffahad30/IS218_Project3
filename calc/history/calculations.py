@@ -1,5 +1,6 @@
 """Calculations Class"""
 
+import pandas as pd
 from calc.operations.addition import Addition
 from calc.operations.subtraction import Subtraction
 from calc.operations.multiplication import Multiplication
@@ -10,6 +11,8 @@ class Calculations:
     """Manages the history of the calculator"""
 
     history = []
+    csv_history = []
+    table = {"operations": [], "value1": [], "value2": [], "result": []}
 
     # pylint: disable=too-few-public-methods
     @staticmethod
@@ -72,4 +75,55 @@ class Calculations:
         """dividing and appending result to history"""
         Calculations.add_calculation(Division.create(value_a, value_b))
         return True
+
+    @staticmethod
+    def clear_csv_history():
+        """ Clear the history in csv history list """
+        Calculations.csv_history.clear()
+
+    @staticmethod
+    def clear_csv_files():
+        """Clear csv file"""
+        Calculations.table["value1"].clear()
+        Calculations.table["value2"].clear()
+        Calculations.table["operations"].clear()
+        Calculations.table["result"].clear()
+        Calculations.clear_csv_history()
+        Calculations.dataframe = pd.DataFrame(Calculations.table)
+        # noinspection PyTypeChecker
+        Calculations.dataframe.to_csv("history.csv", index=False)
+        return True
+
+    @staticmethod
+    def put_history_to_csv(operation, value1, value2, result):
+        """Write the history to csv file"""
+        Calculations.table["value1"].append(value1)
+        Calculations.table["value2"].append(value2)
+        Calculations.table["operations"].append(operation)
+        Calculations.table["result"].append(result)
+        Calculations.dataframe = pd.DataFrame(Calculations.table)
+        # noinspection PyTypeChecker
+        Calculations.dataframe.to_csv("history.csv", index=False)
+        return True
+
+    @staticmethod
+    def read_csv_file():
+        # pylint: disable=consider-using-enumerate
+        """Read the history from csv and put it into the history """
+        dataframe = pd.read_csv('history.csv')
+        value1 = dataframe["value1"]
+        value2 = dataframe["value2"]
+        operations = dataframe["operations"]
+        result = dataframe["result"]
+        Calculations.clear_csv_history()
+        for i in range(len(result)):
+            item = [value1[i], value2[i], operations[i], result[i]]
+            Calculations.csv_history.append(item)
+        return True
+
+    @staticmethod
+    def get_history():
+        """Get Calculation history from CSV file"""
+        # Get history after reading the history
+        return Calculations.csv_history
 

@@ -44,3 +44,24 @@ class Calculator:
         """ divides two numbers"""
         Calculations.add_division_result_to_history(value_a, value_b)
         return True
+
+    @staticmethod
+    def read_csv_file():
+        """Read history"""
+        return Calculations.read_csv_file()
+
+    @staticmethod
+    def put_history_to_csv(operation, value1, value2, result):
+        """Write History"""
+        return Calculations.put_history_to_csv(operation, value1, value2, result)
+
+    @staticmethod
+    def clear_csv_files():
+        """Clear the csv file"""
+        Calculations.clear_csv_files()
+        return True
+
+    @staticmethod
+    def get_history():
+        """ Get history of the Calculator from CSV file """
+        return Calculations.get_history()

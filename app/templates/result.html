@@ -23,4 +23,40 @@
     <button onclick="location.href='/basicform'" class="button button1">Back to the Calculator</button>
     </p>
 
+    <h3>Calculation Result History</h3>
+      <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Value 1</th>
+        <th>Value 2</th>
+        <th>Operation</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+        <tr>
+          <td>{{ item[0] }}</td>
+          <td>{{ item[1] }}</td>
+          <td>{{ item[2] }}</td>
+          <td>{{ item[3] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          {searchable: false},
+          {searchable: false},
+          null,
+          {searchable: false}],
+      });
+    });
+  </script>
+
 {% endblock %}
