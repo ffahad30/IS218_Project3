@@ -46,30 +46,30 @@ class Calculations:
 
     @staticmethod
     def add_calculation(calculation):
-        """ get a generic calculation from history"""
+        """add calculation result to the history"""
         return Calculations.history.append(calculation)
 
     @staticmethod
     def add_addition_result_to_history(value_a, value_b):
-        """create an addition and add object to history using factory method create"""
+        """adding and appending result to history"""
         Calculations.add_calculation(Addition.create(value_a, value_b))
         return True
 
     @staticmethod
     def add_subtraction_result_to_history(value_a, value_b):
-        """create a subtraction object to history using factory method create"""
+        """subtracting and appending result to history"""
         Calculations.add_calculation(Subtraction.create(value_a, value_b))
         return True
 
     @staticmethod
     def add_multiplication_result_to_history(value_a, value_b):
-        """Add a multiplication object to history using factory method create"""
+        """multiplying and appending result to history"""
         Calculations.add_calculation(Multiplication.create(value_a, value_b))
         return True
 
     @staticmethod
     def add_division_result_to_history(value_a, value_b):
-        """Add a division object to history using factory method create"""
+        """dividing and appending result to history"""
         Calculations.add_calculation(Division.create(value_a, value_b))
         return True
 

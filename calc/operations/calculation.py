@@ -1,11 +1,7 @@
 """ This is the abstract base calculation class"""
 
 
-# calculator operations inherit value_a and value_b from Calculation class = inheritance
-# class Calculation = abstract class
-# abstraction
 # pylint: disable=line-too-long
-# abstract class not dependent on any details but provides the details for higher level classes = DIP
 class Calculation:
     """ calculation class"""
 
