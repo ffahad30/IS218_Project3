@@ -21,8 +21,7 @@ def basicform():
     if request.method == 'POST':
         if request.form.get('action') == 'Clear':
             Calculator.clear_csv_files()
-            flash("Table is cleared!", "success")
-            return render_template('result.html', value1="None", value2="None", operation="None", result="None")
+            return render_template('result.html', value1="", value2="", operation="", result="")
         # get the values from the form
         value_a = request.form['value1']
         value_b = request.form['value2']

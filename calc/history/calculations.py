@@ -95,7 +95,7 @@ class Calculations:
         return True
 
     @staticmethod
-    def put_history_to_csv(operation, value1, value2, result):
+    def put_history_to_csv(value1, value2, operation, result):
         """Write the history to csv file"""
         Calculations.table["value1"].append(value1)
         Calculations.table["value2"].append(value2)
