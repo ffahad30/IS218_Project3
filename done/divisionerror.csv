@@ -1,6 +1,0 @@
-,VALUE 1,VALUE 2,OPERATION,RESULT
-TEST 1,6,0,Division - ERROR!,error
-TEST 2,10,0,Division - ERROR!,error
-TEST 3,30,0,Division - ERROR!,error
-TEST 4,14,0,Division - ERROR!,error
-TEST 5,9,0,Division - ERROR!,error
