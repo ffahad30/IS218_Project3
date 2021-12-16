@@ -17,6 +17,27 @@ class Calculator:
         """ return the last result in the calculator's history"""
         return Calculations.get_last_calculation_result_value()
 
+    @staticmethod
+    def read_history_csv():
+        """ read history.csv"""
+        return Calculations.read_history_csv()
+
+    @staticmethod
+    def write_history_csv(value1, value2, operation, result):
+        """ write history.csv"""
+        return Calculations.write_history_csv(value1, value2, operation, result)
+
+    @staticmethod
+    def clear_history_csv():
+        """ clear history.csv"""
+        Calculations.clear_history_csv()
+        return True
+
+    @staticmethod
+    def return_calc_history():
+        """ return calculator history"""
+        return Calculations.return_calc_history()
+
     # static method
     @staticmethod
     def addition(value_a, value_b):
@@ -44,24 +65,3 @@ class Calculator:
         """ divides two numbers"""
         Calculations.add_division_result_to_history(value_a, value_b)
         return True
-
-    @staticmethod
-    def read_csv_file():
-        """Read history"""
-        return Calculations.read_csv_file()
-
-    @staticmethod
-    def put_history_to_csv(value1, value2, operation, result):
-        """Write History"""
-        return Calculations.put_history_to_csv(value1, value2, operation, result)
-
-    @staticmethod
-    def clear_csv_files():
-        """Clear the csv file"""
-        Calculations.clear_csv_files()
-        return True
-
-    @staticmethod
-    def get_history():
-        """ Get history of the Calculator from CSV file """
-        return Calculations.get_history()
