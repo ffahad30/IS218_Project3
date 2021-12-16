@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Calculator Results{% endblock %}
 {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/basicform.css') }}" />
 {% endblock %}
 {% block content %}
+    <div style="background-color: linen;" class="content">
     {% with errors = get_flashed_messages(category_filter=["error"]) %}
   	{% if errors %}
 	<div class="alert-message block-message error">
@@ -14,40 +16,45 @@
 	</div>
   	{% endif %}
 	{% endwith %}
-    <h1>Result</h1>
-    <strong>Value 1: </strong> {{ value1 }} <br>
-    <strong>Value 2: </strong> {{ value2 }} <br>
-    <strong>Operation: </strong> {{ operation }} <br>
-    <strong>Result: </strong> {{ result }}
-    <p>
-    <button onclick="location.href='/basicform'" class="button button1">Back to the Calculator</button>
-    </p>
 
-    <h3>Calculation Result History</h3>
-      <table id="data" class="table table-striped">
-    <thead>
-      <tr>
-        <th>Value 1</th>
-        <th>Value 2</th>
-        <th>Operation</th>
-        <th>Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in items %}
+    <body>
+    <div style="background-color: linen; padding-left: 5%; padding-right: 5%; text-align: center;" class="content">
+        <h1>Result</h1>
+        <strong>Value 1: </strong> {{ value1 }} <br>
+        <strong>Value 2: </strong> {{ value2 }} <br>
+        <strong>Operation: </strong> {{ operation }} <br>
+        <strong>Result: </strong> {{ result }}
+        <p style="margin: 0; padding: 0;">
+            <button onclick="location.href='/basicform'" class="button button1">Back to the Calculator</button>
+        </p>
+    </div>
+     </body>
+
+    <div style="background-color: linen; padding-left: 5%; padding-right: 5%; text-align: center;" class="content">
+    <h3 style="padding-left: 0; padding-right: 0; text-align: left;">Calculation Result History</h3>
+    <table id="data" class="table table-striped">
+        <thead>
         <tr>
-          <td>{{ item[0] }}</td>
-          <td>{{ item[1] }}</td>
-          <td>{{ item[2] }}</td>
-          <td>{{ item[3] }}</td>
+            <th>Value 1</th>
+            <th>Value 2</th>
+            <th>Operation</th>
+            <th>Result</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
-
 {% block scripts %}
-  <script>
+    <script>
     $(document).ready(function () {
       $('#data').DataTable({
         columns: [
@@ -57,12 +64,9 @@
           {searchable: false}],
       });
     });
-  </script>
-
-    <div id="footer">
-    {% block footer %}
-        &copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.
-    {% endblock %}
+    </script>
+    <p style="background-color: linen; margin: 0; padding: 0;">&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.</p>
+    </div>
     </div>
 
 {% endblock %}

@@ -37,7 +37,7 @@ def basicform():
         else:
             getattr(Calculator, operation)(value_a, value_b)
             result = str(Calculator.last_calculation_result_in_history())
-            Calculator.put_history_to_csv(operation, value_a, value_b, result)
+            Calculator.put_history_to_csv(value_a, value_b, operation, result)
             Calculator.read_csv_file()
             items = Calculator.get_history()
             return render_template('result.html', value1=value_a, value2=value_b, operation=operation, items=items, result=result)

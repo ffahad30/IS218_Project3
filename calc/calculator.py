@@ -51,9 +51,9 @@ class Calculator:
         return Calculations.read_csv_file()
 
     @staticmethod
-    def put_history_to_csv(operation, value1, value2, result):
+    def put_history_to_csv(value1, value2, operation, result):
         """Write History"""
-        return Calculations.put_history_to_csv(operation, value1, value2, result)
+        return Calculations.put_history_to_csv(value1, value2, operation, result)
 
     @staticmethod
     def clear_csv_files():

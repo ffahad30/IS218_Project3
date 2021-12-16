@@ -1,9 +1,13 @@
 p{
-  padding-left: 5%;
+    padding-left: 5%;
     padding-right: 5%;
     text-align: center;
 }
-
+.dataTables_length.data_length, .dataTables_info.data_info{
+   padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+}
 
 h1{
     color: black;
