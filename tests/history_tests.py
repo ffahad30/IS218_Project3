@@ -4,15 +4,14 @@
 import pytest
 
 from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 
-
-# Arrange step for each of the unit tests
 # fixture
 @pytest.fixture
 def clear_calculator_history_fixture():
     """clears history each time a test is run"""
     # pylint: disable=redefined-outer-name
-    Calculator.clear_calculator_history()
+    Calculations.clear_calc_history()
 
 
 def test_clear_calculator_history(clear_calculator_history_fixture):
@@ -20,31 +19,21 @@ def test_clear_calculator_history(clear_calculator_history_fixture):
     # pylint: disable=unused-argument,redefined-outer-name
     # Act
     # Assert
-    assert Calculator.add_numbers(1, 2) == 3
-    assert Calculator.add_numbers(2, 5) == 7
-    assert Calculator.history_calculations_count() == 2
-    assert Calculator.clear_calculator_history() is True
-    assert Calculator.history_calculations_count() == 0
+    assert Calculator.addition(1, 2) is True
+    assert Calculator.addition(2, 5) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculations.clear_calculator_history() is True
+    assert Calculations.history_calculations_count() == 0
 
 
 def test_history_calculations_count(clear_calculator_history_fixture):
-    """ testing that the calculator can count the number of calculation logs in history"""
+    """ testing that the calculator can count the number of calculation results in history"""
     # pylint: disable=unused-argument,redefined-outer-name
     # Act
     # Assert
-    assert Calculator.add_numbers(1, 2) == 3
-    assert Calculator.add_numbers(2, 4) == 6
-    assert Calculator.history_calculations_count() == 2
-
-
-def test_first_calculation_result_in_history(clear_calculator_history_fixture):
-    """ testing that the calculator can return the first calculation result in history"""
-    # pylint: disable=unused-argument,redefined-outer-name
-    # Act
-    # Assert
-    assert Calculator.add_numbers(1, 2) == 3
-    assert Calculator.add_numbers(2, 4) == 6
-    assert Calculator.first_calculation_result_in_history() == 3
+    assert Calculator.addition(1, 2) is True
+    assert Calculator.addition(2, 4) is True
+    assert Calculations.history_calculations_count() == 2
 
 
 def test_last_calculation_result_in_history(clear_calculator_history_fixture):
@@ -52,6 +41,6 @@ def test_last_calculation_result_in_history(clear_calculator_history_fixture):
     # pylint: disable=unused-argument,redefined-outer-name
     # Act
     # Assert
-    assert Calculator.add_numbers(1, 2) == 3
-    assert Calculator.add_numbers(2, 4) == 6
+    assert Calculator.addition(1, 2) is True
+    assert Calculator.addition(2, 4) is True
     assert Calculator.last_calculation_result_in_history() == 6

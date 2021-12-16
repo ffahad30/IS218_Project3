@@ -2,14 +2,16 @@
 {% block title %}Home{% endblock %}
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 {% endblock %}
 {% block content %}
+    <body style="background-color: linen;">
     <h1>Calculator</h1>
-    <p class="important">Welcome to my calculator! This calculator will help you add, subtract, multiply, and divide any two numbers!</p>
+    <h2><i>This calculator will help you add, subtract, multiply, and divide any two numbers!</i></h2>
     <p><img style="width: 400px; height: 400px;" src="{{ url_for('static', filename='images/calculator.jpg') }}" alt="calculator"></p>
-    <button onclick="location.href='/basicform'" class="button button1">Start Calculating!</button>
+    <button style=" margin-left: 46.5%; margin-right: 50%; text-align: center;" onclick="location.href='/basicform'" class="button button1">Start Calculating!</button>
+    <p>&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.</p>
+    </body>
 
 {% endblock %}
+

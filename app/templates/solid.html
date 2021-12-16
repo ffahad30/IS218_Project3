@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}SOLID{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}" />
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <title>SOLID</title>
+
+{% block content %}
+<div class=".container">
+    <div class="column side">
+
+        <h2>Calculator Program Explained:</h2>
+        <p>SOLID</p>
+        <p>
+            <a href="https://github.com/ffahad30/calc2/tree/SOLID">
+                <button class="calltoaction">View the code</button>
+            </a>
+        </p>
+
+
+
+        <p>
+            <img style="float: center;" src="https://miro.medium.com/max/1400/1*QXKvE2F44XTkBi3YDvroWw.jpeg" alt="image" width="100%" height="300px" />
+
+
+        </p>
+    </div>
+</div>
+
+
+    <div class="column middle">
+        <h1>SOLID Design</h1>
+        <h2>What are the SOLID principles?</h2>
+        <p>Single-Responsibility Principle, Open-Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, Dependency Inversion Principle</p>
+
+        <p>
+        <h2>Single-Responsibility Principle</h2>
+        <p>"A class should have one, and only one, reason to change". This principle says that every component of your code (classes and functions) should only have one responsibility because it is easier to address errors  and to create testing for each function of your code. The calculator program has several mathematical and history functions but there is a separate function for each of the mathematical operations and a separate function for each behavior of the calculator's history, demonstrating the Single-responsibility principle. It would be harder to get the calculator to run properly if there was only one function to clear the calculator's history, count the length of the calculator, and return the first and last item in the history. Therefore they are all separate functions in accordance with the SRP.</p>
+        </p>
+
+        <p>
+        <h2>Open-Closed Principle</h2>
+        <p>"Software entities…should be open for extension but closed for modification". This principle says that you shouldn't need to modify the code you've already written to accommodate new functionality, but add what you now need. If you need to add new functions to your code, you should not have to change other parts of the code. In the Calculator class, all the functions are open for extension but closed for modification meaning anything can be added to them but they cannot be changed because if you change anything about them, they would not be fulfilling their purpose anymore. For example, the add_numbers function only adds and puts the result in the history and while you can add more to that function, you cannot change what it already does because those are necessities. </p>
+        </p>
+
+        <p>
+        <h2>Liskov Substitution Principle</h2>
+        <p>"Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it" . This principle says that if a subclass redefines a function also present in the parent class, a client-user should not notice any difference in behaviour and it is a substitute for the base class. In the program, value_a and value_b are inherited from the Calculation class and while they are used in the Addition, Subtraction, Multiplication, and Division classes, they are not changing anything about the value_a and value_b from the base Calculation class.  </p>
+        </p>
+
+        <p>
+        <h2>Interface Segregation Principle</h2>
+        <p>"Many client-specific interfaces are better than one general-purpose interface". This principle states that a class should only consist of the interface (methods and properties) needed and avoid methods that won't work or have no reason to be a part of that class. The Calculator class and all of its functions only have the methods and properties needed and nothing extra. The mathematical functions only perform the function and add the result to history so the history functions can work. The history functions only consist of the code needed for each behavior of the history to work. There is nothing extra in any of the functions in the Calculator class. </p>
+        </p>
+
+        <p>
+        <h2>Dependency Inversion Principle</h2>
+        <p>"Abstractions should not depend on details. Details should depend on abstraction. High-level modules should not depend on low-level modules. Both should depend on abstractions". This principle states that abstractions shouldn't be dependent on low-level methods but both should be dependent on a third interface. The Calculation class, which is the abstract class, is not dependent on any details from the other class but provides the details (value_a and value_b initialization) for the higher level classes (Calculator, Addition, Subtraction, Multiplication, Division). </p>
+        </p>
+
+        <p>*View the full Calculator Program explained <a style="color: cornflowerblue;" href="https://github.com/ffahad30/calc2/tree/calc_explained">here</a>.*</p>
+        <p>&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a></p>
+    </div>
+
+{% endblock %}

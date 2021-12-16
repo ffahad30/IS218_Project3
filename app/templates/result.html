@@ -1,17 +1,72 @@
 {% extends "base.html" %}
 {% block title %}Calculator Results{% endblock %}
 {% block head %}
-    {{ super() }}
-    <style type="text/css">
-        .important { color: #336699; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/basicform.css') }}" />
 {% endblock %}
 {% block content %}
-    <form action="/result" method="POST">
-    <h1>Result</h1>
-    <strong>Value 1: </strong> {{ value1 }} <br>
-    <strong>Value 2: </strong> {{ value2 }} <br>
-    <strong>Operation: </strong> {{ operation }} <br>
-    <strong>Result: </strong> {{ result }}
+    <div style="background-color: linen;" class="content">
+    {% with errors = get_flashed_messages(category_filter=["error"]) %}
+  	{% if errors %}
+	<div class="alert-message block-message error">
+    	{% for msg in errors %}
+		<div class="alert alert-danger" role="alert">
+			{{ msg }}
+		</div>
+    	{% endfor %}
+	</div>
+  	{% endif %}
+	{% endwith %}
+
+    <body>
+    <div style="background-color: linen; padding-left: 5%; padding-right: 5%; text-align: center;" class="content">
+        <h1>Result</h1>
+        <strong>Value 1: </strong> {{ value1 }} <br>
+        <strong>Value 2: </strong> {{ value2 }} <br>
+        <strong>Operation: </strong> {{ operation }} <br>
+        <strong>Result: </strong> {{ result }}
+        <p style="margin: 0; padding: 0;">
+            <button onclick="location.href='/basicform'" class="button button1">Back to the Calculator</button>
+        </p>
+    </div>
+     </body>
+
+    <div style="background-color: linen; padding-left: 5%; padding-right: 5%; text-align: center;" class="content">
+    <h3 style="padding-left: 0; padding-right: 0; text-align: left;">Calculation Result History</h3>
+    <table id="data" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Value 1</th>
+            <th>Value 2</th>
+            <th>Operation</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in calculation_info %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[1] }}</td>
+                <td>{{ i[2] }}</td>
+                <td>{{ i[3] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block scripts %}
+    <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          {searchable: false},
+          {searchable: false},
+          null,
+          {searchable: false}],
+      });
+    });
+    </script>
+    <p style="background-color: linen; margin: 0; padding: 0;">&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.</p>
+    </div>
+    </div>
 
 {% endblock %}

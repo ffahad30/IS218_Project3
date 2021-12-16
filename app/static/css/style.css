@@ -5,7 +5,7 @@ body {
     border-radius: 12px;
 }
 .button {
-  background-color: mediumblue;
+  background-color: cornflowerblue;
   border: none;
   color: white;
   padding: 11px;
@@ -15,4 +15,9 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.column.middle {
+    width: 70%;
+    float:left;
+    position:relative;
 }

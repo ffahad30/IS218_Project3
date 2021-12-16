@@ -1,19 +1,9 @@
 """ This is the increment function"""
 
-from calc.operations.addition import Addition
-from calc.operations.subtraction import Subtraction
-from calc.operations.multiplication import Multiplication
-from calc.operations.division import Division
-
+from calc.history.calculations import Calculations
 
 # pylint: disable=line-too-long
 
-# all of the calculator's methods and variables are in class Calculator = encapsulation
-# static class
-# main class in facade pattern which inherits Addition, Subtraction, Multiplication, and Subtraction classes
-# calculator class and all of its functions only have the methods and properties needed, nothing extra = ISP
-# all functions are open for extension but closed for modification ; they cannot be changed = OCP
-# separate functions for each of the calculator's math and history operations = SRP
 class Calculator:
     """ This is the Calculator class"""
 
@@ -22,71 +12,55 @@ class Calculator:
 
     # static method
     @staticmethod
-    # "-> int" is a type hint
-    def first_calculation_result_in_history() -> int:
-        """ return the first result in the calculator's history"""
-        return Calculator.history[0].get_result()
-
-    # static method
-    @staticmethod
-    # "-> int" is a type hint
-    def last_calculation_result_in_history() -> int:
+    def last_calculation_result_in_history():
         """ return the last result in the calculator's history"""
-        return Calculator.history[-1].get_result()
+        return Calculations.get_last_calculation_result_value()
+
+    @staticmethod
+    def read_history_csv():
+        """ read history.csv"""
+        return Calculations.read_history_csv()
+
+    @staticmethod
+    def write_history_csv(value1, value2, operation, result):
+        """ write history.csv"""
+        return Calculations.write_history_csv(value1, value2, operation, result)
+
+    @staticmethod
+    def clear_history_csv():
+        """ clear history.csv"""
+        Calculations.clear_history_csv()
+        return True
+
+    @staticmethod
+    def return_calc_history():
+        """ return calculator history"""
+        return Calculations.return_calc_history()
 
     # static method
     @staticmethod
-    # "-> int" is a type hint
-    def history_calculations_count() -> int:
-        """ count the number of calculation logs in the history"""
-        # len() is a list method
-        return len(Calculator.history)
-
-    # static method
-    @staticmethod
-    # "-> bool" is a type hint
-    def clear_calculator_history() -> bool:
-        """ clear the calculator's history"""
-        # clear() is a list method
-        Calculator.history.clear()
+    def addition(value_a, value_b):
+        """ adds two numbers"""
+        Calculations.add_addition_result_to_history(value_a, value_b)
         return True
 
     # static method
     @staticmethod
-    # "-> int" is a type hint
-    def addition(value_a, value_b) -> int:
-        """ adds two numbers"""
-        addition = Addition.create(value_a, value_b)
-        # append() is a list method
-        Calculator.history.append(addition)
-        return Calculator.last_calculation_result_in_history()
+    def subtraction(value_a, value_b):
+        """ subtracts two numbers"""
+        Calculations.add_subtraction_result_to_history(value_a, value_b)
+        return True
 
     # static method
     @staticmethod
-    # "-> int" is a type hint
-    def subtraction(value_a, value_b) -> int:
-        """ subtracts a number from result"""
-        subtraction = Subtraction.create(value_a, value_b)
-        # append() is a list method
-        Calculator.history.append(subtraction)
-        return Calculator.last_calculation_result_in_history()
-
-    # static method
-    @staticmethod
-    # "-> int" is a type hint
-    def multiplication(value_a, value_b) -> int:
+    def multiplication(value_a, value_b):
         """ multiplies two numbers"""
-        multiplication = Multiplication.create(value_a, value_b)
-        # append() is a list method
-        Calculator.history.append(multiplication)
-        return Calculator.last_calculation_result_in_history()
+        Calculations.add_multiplication_result_to_history(value_a, value_b)
+        return True
 
     # static method
     @staticmethod
-    # "-> int" is a type hint
-    def division(value_a, value_b) -> int:
+    def division(value_a, value_b):
         """ divides two numbers"""
-        division = Division.create(value_a, value_b)
-        # append() is a list method
-        Calculator.history.append(division)
-        return Calculator.last_calculation_result_in_history()
+        Calculations.add_division_result_to_history(value_a, value_b)
+        return True

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Pylint{% endblock %}
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}" />
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <title>Pylint</title>
+
+{% block content %}
+<div class=".container">
+    <div class="column side">
+
+        <h2>Calculator Program Explained:</h2>
+        <p>Pylint & OOP Terms</p>
+        <p>
+            <a href="https://github.com/ffahad30/calc2/tree/pylint">
+                <button class="calltoaction">View the code</button>
+            </a>
+        </p>
+
+
+
+        <p>
+            <img style="float: center;" src="https://ms-python.gallerycdn.vsassets.io/extensions/ms-python/python/2021.11.1422169775/1636051069395/Microsoft.VisualStudio.Services.Icons.Default" alt="image" width="100%" height="300px" />
+
+
+        </p>
+    </div>
+</div>
+
+    <div class="column middle">
+    <h1>Pylint & OOP</h1>
+    <h2>What is Pylint?</h2>
+    <p>Pylint is a tool that assesses Python code to detect stylistic errors and defects. It enforces PEP8, an international coding standard for Python to ensure the code is written properly. In its assessment, Pylint will tell you any errors in your code and what to do to fix them.</p>
+    <p>
+    <h2>
+        Object-Oriented Programming (OOP)
+    </h2>
+    <ul>
+        <li>Object-Oriented Programming creates separation in the code by binding data and the functions that use that data together, which means no other section of the code can access that data. Object-Oriented Programming makes the program more efficient and easier to understand.</li>
+    </ul>
+    </p>
+    <p>
+    <h2>OOP Glossary</h2>
+    <ul>
+        <li>Factory: Factory method allows an interface or a class to create an object, but lets subclasses decide which class or object to instantiate. In factory method, an object is created without exposing the logic to the client. The calculator program has a create function factory method in the Calculation class which creates a class containing value_a and value_b. The variables value_a and value_b are created and used to do the mathematical operations without the user knowing it. </li>
+        <li>Instantiation: Instantiating a class creates a copy of the class which inherits all of the class variables in the method. To instantiate the class, you call the class as if it were a function and pass the arguments that the __init__ method defines, and the return value will be the newly created object. In the calculator program, we see instantiation in the Calculation class from which the Addition, Subtraction, Multiplication, and Division classes inherit the variables value_a and value_b. The Calculation class uses the __init__ method. Instance methods (__init__) access and can modify the value of instance attributes, and they have the default parameter (self). The calculation class has an __init__ method with the default parameter (self), along with value_a and value_b as parameters. Instance attributes are not shared by objects because each object has its own copy of the instance attribute. </li>
+        <li>Object: An object is an entity that has a state and behavior associated with it. It can be an integer, string, floating-point number, arrays, dictionaries, etc. Any single string or any single integer is an object. It consists of state (attributes and properties of an object), behavior (methods of an object, response of an object to other objects), and identity (unique name of object, enables object to interact with other objects). The calculator program has a history object which is a list object in the Calculator class. The history object has attributes such as length and behavior such as clear and return last result. </li>
+        <li>Class: A class is a collection of objects. It is a blueprint from which the object is created, contains methods, keeps track of several different attributes (ex. Keeping track of breed and age for 100 different dogs in an organized way that allows you to add other attributes to the ones you already have later). It is created using keyword "class" . Attributes are the variables in a class and can be accessed using the dot (.) operator. The calculator program has several classes such as Calculation, Calculator, Addition, Subtraction, Multiplication, and Subtraction. Each of the classes has its own methods such as get_result, __init__, add_numbers, history_calculations_count, etc. To access the add_numbers method in the Calculator class, calculator_test.py uses Calculator.add_numbers(). </li>
+        <li>Namespace: A namespace is the structure used to organize the symbolic names assigned to objects in a program. It is a collection of currently defined symbolic names along with info about the object that each name references.  An assignment statement creates symbolic name that you can use to reference an object. Within the calculator program, addition.py, subtraction.py, multiplication.py, and division.py have "result" set equal to their appropriate operation (ex. "result = self.value_a + self_value_b"). This is an assignment statement which creates a symbolic name that can be used to refer to the operation and its outcome. "result" then goes in the program's namespace and it knows to return the operation when asked to return result.</li>
+        <li>Constructor: A constructor is code that is executed each time an instance of the class is created. The Calculation class has the default constructor of __init__ which contains the variables of value_a and value_b. Since value_a and value_b are the values being input into the calculator each time it is run, they are essential to every part and function of the program and must be executed each time any part of the program (which are all instances of the Calculation class) is run.</li>
+        <li>Fixture: Fixtures are defined by @pytest.fixture. They are functions which are attached to the tests which run before the test function is executed. In other words, they are a set of resources that have to be set up before the test is run and cleaned up after the test is run. In calculator_test.py and history_test.py, there is a @pytest.fixture which clears the calculator's history before and after each test is run to ensure each test has its own history. This means all the mathematical operation and history tests will have accurate results when asked for the length of the history after each function is run, the first result in the history, the last result in the history, etc. </li>
+        <li>Type hint: A type hint indicates the type of value within your program. It is annotation for arguments and their return value. In calculator.py, each of the static methods have type hints that indicate what type of result each program is supposed to return. For example,in the calculator program, the function add_numbers has a type hint of " -> int" because the function is supposed to return an integer.</li>
+        <li>Type cast: A type cast converts the variable data type into another data type. In addition_test.py, subtraction_test.py, multiplication_test.py, and division_test.py, the tests have a "float(Calculator.last_calculation_result_in_history())" which converts the last calculation result in history from a float to an integer. </li>
+        <li>Unit test: A unit test tests individual components of the software program or application. It checks if all the individual parts of a program are working properly, improves efficiency and quality of code, and helps find bugs easily. The program has several unit tests demonstrated in calculator_test.py, history_test.py, addition_test.py, subtraction_test.py, multiplication_test.py, and division_test.py. There are unit tests for each of the mathematical functions and history functions to ensure that each of the functions are running properly and doing what they are supposed to do. </li>
+        <li>Static method: A static method doesn't receive an implicit first argument and is bound to the class and not the object of the class. It cannot access or modify class state and does not take self or cls parameter. It is restricted in what data it can access. The Calculator class consists of several static methods which do not have any parameters such as the history functions. The mathematical operations take the parameters value_a and value_b. The static methods cannot modify the class Calculator. </li>
+        <li>Static class: A static class that can't be instantiated so no objects can be created from the class. Everything inside the class is accessed using the class name. The calculator class is a static class and it cannot be instantiated. The history object cannot be accesses outside of the class and everything inside the class is accessed using "Calculator.()"</li>
+        <li>Class method: Class methods are functions defined inside the body of a class. They are used to define the behaviors of an object. Class methods have the Self Method so even if a method takes no arguments, we still have to have that one argument. __init__ method is in the class and runs as soon as object of a class is instantiated so it is useful for initialization (initializer method). The Calculation class utilizes a class method which has a create function that creates a class and has the self method/parameter. It also has the __init__ method which demonstrates instantiation.</li>
+        <li>Façade: Façade is a design pattern that provides a simpler unified interface to a more complex system and consists of several sub-systems. The calculator program is in a façade design pattern because the Calculator class is a simpler interface which has a more complex system of sub-classes (Addition class, Subtraction class, Multiplication Class, Division class) behind it.</li>
+        <li>Design patterns: The calculator program uses an abstract class in calculation.py (Calculation class), the factory method in the create function within the Calculation class, and a façade design pattern in the Calculator, Addition, Subtraction, Multiplication, and Division classes. </li>
+        <li>Method: A method is code that defines the actions or behaviors of the class. The Calculator class has several methods such as len(), clear() and append() which are list methods. They define the behavior of the Calculator class such as counting the length of history, clearing the history, and appending results to the history. </li>
+        <li>Property: A property is code that defines the data which is managed by a class. </li>
+        <li>Abstract Class: An abstract class is a blueprint for other classes. It creates a set of methods that must be created within any child classes built from the abstract class. It has a declaration but not an implementation and is used when designing large functional units. It is used to provide common interface for different implementations of a component. The Calculation class is an abstract class which is the blueprint for all the other classes in the program because it declares the __init__ and create methods which are  implemented in all the other classes (Calculator, Addition, Subtraction, Multiplication, Division) but not the Calculation class itself. It provides the common interface of value_a and value_b. </li>
+    </ul>
+    <p>*View the full Calculator Program explained <a style="color: cornflowerblue;" href="https://github.com/ffahad30/calc2/tree/calc_explained">here</a>.*</p>
+    <p>&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a></p>
+    </div>
+
+
+{% endblock %}
