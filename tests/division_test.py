@@ -1,23 +1,16 @@
 """ Testing the division function"""
-# unit test
-# pylint: disable=duplicate-code
 
-
-from calc.operations.division import Division
-
-from tests import reading_csv, results_log as log
-
+from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 
 # division test
 def test_calculator_divide_static():
     """testing that the calculator has a static method for division"""
+    Calculations.clear_calculator_history()
     # pylint: disable=unused-argument,redefined-outer-name
-    path = "done/division.csv"
-    table = reading_csv.reading_csv(path)
-    for i in range(len(table)):
-        # Arrange
-        division = Division(table[0][i], (table[1][i]))
-        # Act
-        # Assert
-        assert division.get_result() == table[2][i]
-        log.log_components(path, i, "division", division.get_result())
+    # Act
+    # Assert
+    assert Calculator.division(30, 5) is True
+    assert Calculator.division(12, 6) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 2

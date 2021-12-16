@@ -1,22 +1,16 @@
 """ Testing the addition function"""
-# unit test
-# pylint: disable=duplicate-code
 
-from calc.operations.addition import Addition
-
-from tests import reading_csv, results_log as log
-
+from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 
 # addition test
 def test_calculator_add_static():
     """testing that the calculator has a static method for addition"""
+    Calculations.clear_calculator_history()
     # pylint: disable=unused-argument,redefined-outer-name
-    path = "done/addition.csv"
-    table = reading_csv.reading_csv(path)
-    for i in range(len(table)):
-        # Arrange
-        addition = Addition(table[0][i], (table[1][i]))
-        # Act
-        # Assert
-        assert addition.get_result() == table[2][i]
-        log.log_components(path, i, "addition", addition.get_result())
+    # Act
+    # Assert
+    assert Calculator.addition(1, 2) is True
+    assert Calculator.addition(2, 5) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 7

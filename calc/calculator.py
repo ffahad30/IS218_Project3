@@ -2,7 +2,6 @@
 
 from calc.history.calculations import Calculations
 
-
 # pylint: disable=line-too-long
 
 class Calculator:

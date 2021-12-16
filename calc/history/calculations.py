@@ -6,6 +6,7 @@ from calc.operations.subtraction import Subtraction
 from calc.operations.multiplication import Multiplication
 from calc.operations.division import Division
 
+# pylint: disable="consider-using-enumerate"
 
 class Calculations:
     """Manages the history of the calculator"""
@@ -124,5 +125,3 @@ class Calculations:
         """dividing and appending result to history"""
         Calculations.add_calculation(Division.create(value_a, value_b))
         return True
-
-

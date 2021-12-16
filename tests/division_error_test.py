@@ -1,23 +1,16 @@
-""" Testing the division function's ZeroDivisionError exception"""
-# unit test
-# pylint: disable=duplicate-code
+""" Testing the zero division exception for the division function"""
 
-
-from calc.operations.division import Division
-
-from tests import reading_csv, error_log as log
-
+from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 
 # division error test
 def test_calculator_divide_error_static():
-    """testing that the calculator throws an exception for the ZeroDivisionError"""
+    """testing that the calculator has a static method for division"""
+    Calculations.clear_calculator_history()
     # pylint: disable=unused-argument,redefined-outer-name
-    path = "done/divisionerror.csv"
-    table = reading_csv.reading_csv(path)
-    for i in range(len(table)):
-        # Arrange
-        division = Division(table[0][i], (table[1][i]))
-        # Act
-        # Assert
-        assert division.get_result() == table[2][i]
-        log.log_errors(path, i)
+    # Act
+    # Assert
+    assert Calculator.division(30, 5) is True
+    assert Calculator.division(12, 0) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == "error"

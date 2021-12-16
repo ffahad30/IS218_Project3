@@ -6,34 +6,64 @@ from calc.history.calculations import Calculations
 
 @pytest.fixture
 def clear_history_fixture():
-    """define a function that will run each time you pass it to a test, it is called a fixture"""
+    """clear calculator's history"""
     # pylint: disable=redefined-outer-name
-    Calculations.clear_history()
+    Calculations.clear_calculator_history()
 
 
-# You have to add the fixture function as a parameter to the test that you want to use it with
+# addition test
 def test_calculator_add_static(clear_history_fixture):
-    """testing that our calculator has a static method for addition"""
+    """testing that the calculator has a static method for addition"""
     # pylint: disable=unused-argument,redefined-outer-name
-    # using Tuple instead of args because we can pack as much data as we need into the tuple
-    my_tuple = (1.0, 2.0, 5.0)
-    Calculator.addition(my_tuple)
-    assert Calculator.get_last_result_value() == 8.0
+    # Act
+    # Assert
+    assert Calculator.addition(1, 2) is True
+    assert Calculator.addition(2, 5) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 7
 
 
+# subtraction test
 def test_calculator_subtract_static(clear_history_fixture):
-    """Testing the subtract method of the calc"""
+    """testing that the calculator has a static method for addition"""
     # pylint: disable=unused-argument,redefined-outer-name
-    # using Tuple instead of args because we can pack as much data as we need into the tuple
-    my_tuple = (1.0, 2.0, 3.0)
-    Calculator.subtraction(my_tuple)
-    assert Calculator.get_last_result_value() == -6.0
+    # Act
+    # Assert
+    assert Calculator.subtraction(9, 6) is True
+    assert Calculator.subtraction(10, 5) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 5
 
 
+# multiplication test
 def test_calculator_multiply_static(clear_history_fixture):
-    """Testing the subtract method of the calc"""
+    """testing that the calculator has a static method for multiplication"""
     # pylint: disable=unused-argument,redefined-outer-name
-    # using Tuple instead of args because we can pack as much data as we need into the tuple
-    my_tuple = (1.0, 2.0, 3.0)
-    Calculator.multiplication(my_tuple)
-    assert Calculator.get_last_result_value() == 6.0
+    # Act
+    # Assert
+    assert Calculator.multiplication(4, 5) is True
+    assert Calculator.multiplication(2, 4) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 8
+
+# division test
+def test_calculator_divide_static(clear_history_fixture):
+    """testing that the calculator has a static method for division"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    # Act
+    # Assert
+    assert Calculator.division(30, 5) is True
+    assert Calculator.division(12, 6) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == 2
+
+# division error test
+def test_calculator_divide_error_static(clear_history_fixture):
+    """testing that the calculator has a static method for division"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    # Act
+    # Assert
+    assert Calculator.division(30, 5) is True
+    assert Calculator.division(12, 0) is True
+    assert Calculations.history_calculations_count() == 2
+    assert Calculator.last_calculation_result_in_history() == "error"
