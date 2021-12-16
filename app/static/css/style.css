@@ -16,3 +16,8 @@ body {
   margin: 4px 2px;
   cursor: pointer;
 }
+.column.middle {
+    width: 70%;
+    float:left;
+    position:relative;
+}
