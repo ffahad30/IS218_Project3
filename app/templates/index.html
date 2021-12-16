@@ -2,9 +2,6 @@
 {% block title %}Home{% endblock %}
 {% block head %}
     {{ super() }}
-    <style type="text/css">
-        .important { color: cornflowerblue; }
-    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 {% endblock %}
 {% block content %}
@@ -14,10 +11,7 @@
     <p><img style="width: 400px; height: 400px;" src="{{ url_for('static', filename='images/calculator.jpg') }}" alt="calculator"></p>
     <button style=" margin-left: 46.5%; margin-right: 50%; text-align: center;" onclick="location.href='/basicform'" class="button button1">Start Calculating!</button>
     <p>&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.</p>
-
-    </div>
-
-</body>
+    </body>
 
 {% endblock %}
 
