@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}AAA{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/articles.css') }}" />
+    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <title>AAA</title>
+
+{% block content %}
+<div class=".container">
+    <div class="column side">
+
+        <h2>Calculator Program Explained:</h2>
+        <p>AAA Testing</p>
+        <p>
+            <a href="https://github.com/ffahad30/calc2/tree/AAAtesting">
+                <button class="calltoaction">View the code</button>
+            </a>
+        </p>
+
+
+
+        <p>
+            <img style="float: center;" src="https://www.fatalerrors.org/images/blog/7a1ec3b14a88701638cb17ff41f1ecb9.jpg" alt="image" width="100%" height="300px" />
+
+
+        </p>
+    </div>
+</div>
+
+    <div class="column middle">
+        <h1>AAA Testing</h1>
+        <h2>What is AAA Testing?</h2>
+        <p>AAA testing is a pattern/structure used to write good unit tests. It stands for Arrange-Act-Assert.</p>
+
+        <p>
+        <h2>
+            Arrange
+        </h2>
+        <p>Arrange set up the test case like if the test requires any objects, databases, etc. set up or if the test needs to log into an app first. It involves any operations that need to be handled at the start of the test (such as creating a variable). The Calculator program has a @pytest.fixture which clears the calculator history to set up each test. The history test must be cleared before each test is run so that the history count for each test is accurate. The fixture is applied to every function that uses it as a parameter and is declared at the beginning of the unit tests.</p>
+        </p>
+
+        <p>
+        <h2>Act</h2>
+        <p>Act involves the main thing being tested. It involves calling a function or method and is focused on the target behavior. In the unit tests, the Act step is demonstrated when methods/functions such as Calculator.add_numbers() or Calculator.history_calculations_count() are called in lines such as "assert Calculator.add_numbers(1, 2) == 3". add_numbers and history_calculations_count are the functions being tested and are the target behavior of the calculator programs.</p>
+        </p>
+
+        <p>
+        <h2>Assert</h2>
+        <p>While the Act steps anticipate and create a response, the Assert steps verify the accuracy of that response. Assert can check numeric or string values and determines if the test passes or fails. It is essentially a statement asserting what the response should be and verifies if the test actually responds in that way. In the unit tests of the Calculator program, there are multiple assert lines which test the function. When writing the program, you assert what the result of the function should be and the unit test checks if your assertion matches what the program actually returns. If your assertion and the program's return matches then the test passes. </p>
+    </p>
+
+        <p>
+        <h2>Why Is It Important?</h2>
+        <p>Unit testing is important because it ensures all parts of the program are correct and run correctly, increases the efficiency of code improvement and maintenance, and increases the quality of the code. It separates the unit test to ensure it is focused, efficient, and arranged properly, and makes the test much more understandable and manageable.</p>
+        </p>
+
+        <p>*View the full Calculator Program explained <a style="color: cornflowerblue;" href="https://github.com/ffahad30/calc2/tree/calc_explained">here</a>.*</p>
+        <p>&copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a></p>
+    </div>
+{% endblock %}
