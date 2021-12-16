@@ -44,3 +44,21 @@ def test_last_calculation_result_in_history(clear_calculator_history_fixture):
     assert Calculator.addition(1, 2) is True
     assert Calculator.addition(2, 4) is True
     assert Calculator.last_calculation_result_in_history() == 6
+
+def test_read_history_csv():
+    """ testing that the calculator can read history.csv"""
+    assert Calculations.read_history_csv() is True
+
+def test_write_history_csv():
+    """ testing that the calculator can write to history.csv"""
+    Calculations.write_history_csv(1, 2, "addition", 3)
+    return True
+
+def test_clear_history_csv():
+    """ testing that the calculator can clear history.csv"""
+    assert Calculations.clear_history_csv() is True
+
+def test_return_calc_history():
+    """ testing that the calculator returns a list for history"""
+    assert type(Calculator.return_calc_history()) == list
+

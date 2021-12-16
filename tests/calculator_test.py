@@ -67,3 +67,24 @@ def test_calculator_divide_error_static(clear_history_fixture):
     assert Calculator.division(12, 0) is True
     assert Calculations.history_calculations_count() == 2
     assert Calculator.last_calculation_result_in_history() == "error"
+
+# read_history_csv test
+def test_calculator_read_history_csv():
+    """testing that the calculator can read history.csv"""
+    assert Calculator.read_history_csv() is True
+
+# write_history_csv test
+def test_calculator_write_history_csv():
+    """testing that the calculator can write to history.csv"""
+    Calculator.write_history_csv(3, 6, "addition", 9)
+    assert Calculator.write_history_csv(2, 5, "addition", 7) is True
+
+# clear_history_csv test
+def test_clear_history_csv():
+    """testing that the calculator can clear history.csv"""
+    assert Calculator.clear_history_csv() is True
+
+# return_calc_history test
+def test_return_calc_history():
+    """ testing that the calculator returns a list for history"""
+    assert type(Calculator.return_calc_history()) == list
