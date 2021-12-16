@@ -3,7 +3,7 @@
 {% block head %}
     {{ super() }}
     <style type="text/css">
-        .important { color: #336699; }
+        .important { color: cornflowerblue; }
     </style>
 {% endblock %}
 {% block content %}
@@ -12,4 +12,10 @@
     <p><img style="width: 400px; height: 400px;" src="{{ url_for('static', filename='images/calculator.jpg') }}" alt="calculator"></p>
     <button onclick="location.href='/basicform'" class="button button1">Start Calculating!</button>
 
+    <div id="footer">
+    {% block footer %}
+        &copy; Copyright 2021 by <a href="https://github.com/ffahad30">Fizah Fahad</a>.
+    {% endblock %}
+    </div>
 {% endblock %}
+

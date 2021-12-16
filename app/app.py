@@ -44,3 +44,22 @@ def basicform():
     else:
         return render_template('basicform.html')
 
+@app.route("/pylint")
+def pylint():
+    """Pylint Route Response"""
+    return render_template('pylint.html')
+
+@app.route("/aaa")
+def aaa():
+    """AAA Route Response"""
+    return render_template('aaa.html')
+
+@app.route("/oop")
+def oop():
+    """OOP Route Response"""
+    return render_template('oop.html')
+
+@app.route("/solid")
+def solid():
+    """SOLID Route Response"""
+    return render_template('solid.html')
